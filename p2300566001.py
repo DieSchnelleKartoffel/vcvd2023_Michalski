@@ -30,12 +30,12 @@ print("")
 #currently on the road, to calculate everything.
 
 print("Insert velocity of a car in kilometers per hour:")
-speed = float(input())
+velocity = float(input())
 print("Insert mass of a car in kilograms:")
 mass = float(input())
 print("Insert friction of coefficient of the road:")
 print("//table of examples is listed above")
-friCoeff = float(input())
+friction = float(input())
 
 #I've decided to add some more variety to the calculation
 #results. Just out of curiosity.
@@ -49,10 +49,10 @@ gravity = float(input())
 
 #Thirdly, we want to start calculating everything step by step.
 #I'm beggining with change of speed from km/h to m/s.
-speedms = float(speed*kilometer/hour)
+speedms = float(velocity*kilometer/hour)
 
 #time of braking, derived to know, what will be the list size:
-brakingTime = float(speedms/(friCoeff*gravity))
+brakingTime = float(speedms/(friction*gravity))
 brakingTimeRound = int(round((brakingTime*milisec), 0) + 1)
 brakingTotal = int(brakingTimeRound + reactionTime*milisec)
 
@@ -68,7 +68,7 @@ for brakingTotal in speedList:
         speedList[brakingTotal] = float(speedms)
         #if the driver did not react yet, the velocity is constant.
     else:
-        speedList[brakingTotal] = float(speedms - friCoeff*gravity*((brakingTotal/milisec)-(reactionTime)))
+        speedList[brakingTotal] = float(speedms - friction*gravity*((brakingTotal/milisec)-(reactionTime)))
         #if the driver reacted, the velocity is decreasing.
 
 #calculation of distance to fill the speedList:
@@ -79,11 +79,11 @@ for brakingTotal in distanceList:
         distanceList[brakingTotal] = float(speedms * (brakingTotal/milisec))
         #if the driver did not react yet, the increase of distance is constant.
     else:
-        distanceList[brakingTotal] = float((speedms * reactionTime) + (speedms * ((brakingTotal/milisec)-(reactionTime))) - ((0.5)*friCoeff*gravity*(((brakingTotal/milisec)-(reactionTime)))*((brakingTotal/milisec)-(reactionTime))))
+        distanceList[brakingTotal] = float((speedms * reactionTime) + (speedms * ((brakingTotal/milisec)-(reactionTime))) - ((0.5)*friction*gravity*(((brakingTotal/milisec)-(reactionTime)))*((brakingTotal/milisec)-(reactionTime))))
         #if the driver reacted, the distance is increasing slower and slower.
         #Explanation of line 81:
         #Total distance = Distance before braking + Distance after applying brakes derived from the equation:
-        # S = S0 + V*t - (a*t^2)/2,  a = Fr/m = friCoeff*G*m / m = friCoeff*G
+        # S = S0 + V*t - (a*t^2)/2,  a = Fr/m = friction*G*m / m = friction*G
 
 #Now, after calculations are done, we need only to output data and draw graphs.
 
