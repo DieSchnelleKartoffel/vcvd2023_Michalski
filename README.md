@@ -19,13 +19,13 @@ program using listed above parameters.
 
 #TO RUN DOWNLOADED PROGRAM:
 
-#1. Open Visual Studio Code,
+#1. Please open Visual Studio Code,
 
 #2. Open p2300566001.py file,
 
 #3. Compile the code,
 
-#4. Insert parameters in terminal of Visual Studio Code,
+#4. Please insert parameters in terminal of Visual Studio Code,
 
-#5. After pop-up windows come with graphs, close them to continue work of program.
+#5. After pop-up windows come with graphs, please close them to continue work of program.
 New graphs in .pdf files should appear in the directory where .py file was opened.
