@@ -1,7 +1,6 @@
 #Hello and welcome to the code! Equations used here have been derived
 #independently on the piece of paper using good old ballpen, maths and
-#physics knowledge from presentation. Photo of the calculations is
-#included in repository.
+#physics knowledge from presentation.
 
 #Importing libraries for maths and graph plotting. I've read article
 #to do it: https://www.geeksforgeeks.org/graph-plotting-in-python-set-1
@@ -63,6 +62,7 @@ distanceList = list(range(0,brakingTotal-1))
 timeList = list(range(0,brakingTotal-1))
 
 #calculation of speed to fill the speedList:
+
 for brakingTotal in speedList:
     if brakingTotal < (reactionTime*milisec):
         speedList[brakingTotal] = float(speedms)
@@ -72,7 +72,8 @@ for brakingTotal in speedList:
         #if the driver reacted, the velocity is decreasing.
 
 #calculation of distance to fill the speedList:
-#Unfortunatly, line no 81 is pretty bloated.
+#Unfortunatly, line no 82 is pretty bloated.
+        
 for brakingTotal in distanceList:
     if brakingTotal < (reactionTime*milisec):
         distanceList[brakingTotal] = float(speedms * (brakingTotal/milisec))
@@ -96,6 +97,7 @@ plt.xlabel('Time (ms)') #naming the X axis of graph
 plt.ylabel('Velocity (m/s)') #naming the Y axis of graph
 plt.title("Velocity of car during braking") #adding title of graph
 plt.grid() #adding grid to the graph
+plt.savefig("velBrk.pdf", format="pdf", bbox_inches="tight") #saving .pdf file with graph
 plt.show() #displaying of graph
 
 plt.plot(timeList, distanceList)
@@ -103,4 +105,5 @@ plt.xlabel('Time (ms)')
 plt.ylabel('Distance (m)')
 plt.title("Distance of car during braking")
 plt.grid()
+plt.savefig("distBrk.pdf", format="pdf", bbox_inches="tight")
 plt.show()
